@@ -57,7 +57,7 @@ const Form = () => {
             name="headline"
             value={formData.headline}
             onChange={handleChange}
-            // required
+            required
           />
         </label>
         <label>
@@ -76,23 +76,6 @@ const Form = () => {
             <option value="😋">😋Hungry</option>
           </select>
         </label>
-        {/* <label>
-          <select
-            name="weather"
-            id="weather"
-            value={formData.weather}
-            onChange={handleChange}
-            required
-          >
-            <option value="">-- How is the weather? --</option>
-            <option value="hot">Hot</option>
-            <option value="sunny">Sunny</option>
-            <option value="clouded">Clouded</option>
-            <option value="rainy">Rainy</option>
-            <option value="snow">Snow</option>
-            <option value="cold">Cold</option>
-          </select>
-        </label> */}
         <label>
           <input
             type="color"
@@ -100,7 +83,7 @@ const Form = () => {
             id="weather"
             value={formData.weather || "#89CFF1"}
             onChange={handleChange}
-            // required
+            required
             list="presets"           
             ></input>
               </label>
@@ -119,7 +102,7 @@ const Form = () => {
             placeholder="Enter image URL"
             value={formData.imageUrl}
             onChange={handleChange}
-            // required
+            required
           />
         </label>
         <label>
@@ -129,7 +112,7 @@ const Form = () => {
             name="thoughts"
             value={formData.thoughts}
             onChange={handleChange}
-            // required
+            required
           />
         </label>
         <button type="submit">Save</button>
