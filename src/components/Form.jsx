@@ -43,87 +43,96 @@ const Form = () => {
   const dateNow = new Date().toISOString().split("T")[0];
   console.log(dateNow);
   return (
-    <div className="p-[2rem] flex flex-col gap-3 justify-center items-center">
-      <h1 className="text-[3.6rem]">Let’s Get Those Thoughts Flowing!</h1>
-
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-wrap flex-col text-[2.4rem] gap-12 w-[40%] mt-[2rem]"
+    <>
+      <input type="checkbox" id="formModal" className="modal-toggle" />
+      <div
+        className="formContainer modal w-[70%] h-[70%] p-[2rem] flex flex-col gap-3 justify-center items-centermx-auto my-[10rem] mx-auto"
+        role="dialog"
       >
-        <input
-          type="text"
-          name="headline"
-          value={formData.headline}
-          onChange={handleChange}
-          required
-          placeholder="What is going on?"
-          className="text-[1.8rem] text-black border-t-2 border-b-2 border-black"
-        />
+        <h1 className="text-[3.6rem]">Let’s Get Those Thoughts Flowing!</h1>
 
-        <select
-          name="mood"
-          id="mood"
-          value={formData.mood}
-          onChange={handleChange}
-          required
-          className="text-[1.8rem] text-black border-t-2 border-b-2 border-black"
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-wrap flex-col text-[2.4rem] gap-12 w-[40%] mt-[2rem]"
         >
-          <option value="">How is your mood?</option>
-          <option value="😊">😊Happy</option>
-          <option value="😢">😢Sad</option>
-          <option value="😠">😠Angry</option>
-          <option value="😞">😞Depressed</option>
-          <option value="😋">😋Hungry</option>
-        </select>
+          <input
+            type="text"
+            name="headline"
+            value={formData.headline}
+            onChange={handleChange}
+            required
+            placeholder="What is going on?"
+            className="text-[1.8rem] text-black border-t-2 border-b-2 border-black"
+          />
 
-        <input
-          type="color"
-          name="weather"
-          id="weather"
-          value={formData.weather || "#89CFF1"}
-          onChange={handleChange}
-          required
-          list="presets"
-          placeholder="How is the weather?"
-          className="bg-white w-full text-[1.8rem] text-black border-t-2 border-b-2 border-black"
-        />
+          <select
+            name="mood"
+            id="mood"
+            value={formData.mood}
+            onChange={handleChange}
+            required
+            className="text-[1.8rem] text-black border-t-2 border-b-2 border-black"
+          >
+            <option value="">How is your mood?</option>
+            <option value="😊">😊Happy</option>
+            <option value="😢">😢Sad</option>
+            <option value="😠">😠Angry</option>
+            <option value="😞">😞Depressed</option>
+            <option value="😋">😋Hungry</option>
+          </select>
 
-        <datalist id="presets">
-          <option value="#89CFF0">Baby Blue</option>
-          <option value="#0000ff">Blue</option>
-          <option value="#ffffff">White</option>
-          <option value="#e5b88c">Mahogany</option>
-          <option value="#cccccc">Grey</option>
-        </datalist>
+          <input
+            type="color"
+            name="weather"
+            id="weather"
+            value={formData.weather || "#89CFF1"}
+            onChange={handleChange}
+            required
+            list="presets"
+            placeholder="How is the weather?"
+            className="bg-white w-full text-[1.8rem] text-black border-t-2 border-b-2 border-black"
+          />
 
-        <input
-          type="url"
-          name="imageUrl"
-          placeholder="Got a picture? Enter the URL"
-          value={formData.imageUrl}
-          onChange={handleChange}
-          required
-          className="text-[1.8rem] text-black border-t-2 border-b-2 border-black"
-        />
+          <datalist id="presets">
+            <option value="#89CFF0">Baby Blue</option>
+            <option value="#0000ff">Blue</option>
+            <option value="#ffffff">White</option>
+            <option value="#e5b88c">Mahogany</option>
+            <option value="#cccccc">Grey</option>
+          </datalist>
 
-        <input
-          placeholder="What are you thinking?"
-          type="text"
-          name="thoughts"
-          value={formData.thoughts}
-          onChange={handleChange}
-          required
-          className="text-[1.8rem] text-black border-t-2 border-b-2 border-black w-full"
-        />
+          <input
+            type="url"
+            name="imageUrl"
+            placeholder="Got a picture? Enter the URL"
+            value={formData.imageUrl}
+            onChange={handleChange}
+            required
+            className="text-[1.8rem] text-black border-t-2 border-b-2 border-black"
+          />
 
-        <button
-          type="submit"
-          className="mx-auto w-[12rem] py-[1rem] text-white px-[4rem] rounded bg-black text-[1.4rem] uppercase"
-        >
-          Save
-        </button>
-      </form>
-    </div>
+          <input
+            placeholder="What are you thinking?"
+            type="text"
+            name="thoughts"
+            value={formData.thoughts}
+            onChange={handleChange}
+            required
+            className="text-[1.8rem] text-black border-t-2 border-b-2 border-black w-full"
+          />
+
+          <button
+            type="submit"
+            className="mt-[3rem] mx-auto w-[12rem] py-[1rem] text-white px-[4rem] rounded bg-black text-[1.4rem] uppercase"
+          >
+            Save
+          </button>
+        </form>
+        <label className="modal-backdrop" htmlFor="formModal">
+          Close
+        </label>
+      </div>
+    </>
   );
 };
 
