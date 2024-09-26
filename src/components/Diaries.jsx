@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Diary from "./Diary";
 import SingleDiary from "./SingleDiary";
 
-function Diaries() {
+function Diaries({ diaryUpdate }) {
   const [diaries, setDiaries] = useState([]);
   const [selectedDiary, setSelectedDiary] = useState(null); // State to store the clicked diary
 
@@ -10,7 +10,7 @@ function Diaries() {
   useEffect(() => {
     const formData = localStorage.getItem("formData");
     setDiaries(formData ? JSON.parse(formData) : []);
-  }, []);
+  }, [diaryUpdate]); // Fetch new data whenever diaryUpdate changes
 
   const handleDiaryClick = (diary) => {
     setSelectedDiary(diary); // Set the selected diary for popup
