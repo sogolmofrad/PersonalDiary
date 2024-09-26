@@ -10,13 +10,13 @@ function Home() {
         <img
           src="images/border-image-vertical.png"
           alt="border-right"
-          className="absolute left-0 h-[95%]"
+          className="absolute left-0 h-full"
         />
         <Diaries />
         <img
           src="images/border-image-vertical.png"
           alt="border-right"
-          className="absolute right-0 h-[95%]"
+          className="absolute right-0 h-full"
         />
       </main>
       <Footer />
