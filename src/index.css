@@ -5,3 +5,8 @@
 html {
   font-size: 62.5%;
 }
+
+.formContainer {
+  background-color: white !important;
+  border: 2px solid black;
+}
