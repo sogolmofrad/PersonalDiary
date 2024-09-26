@@ -2,7 +2,7 @@ import Diaries from "../components/Diaries";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 
-function Home() {
+function Home({ diaryUpdate }) {
   return (
     <div>
       <Header />
@@ -12,7 +12,7 @@ function Home() {
           alt="border-right"
           className="absolute left-0 h-full"
         />
-        <Diaries />
+        <Diaries diaryUpdate={diaryUpdate} />
         <img
           src="images/border-image-vertical.png"
           alt="border-right"
