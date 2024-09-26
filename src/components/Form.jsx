@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 
 const Form = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [id, setId] = useState(() => {
     const storedId = localStorage.getItem("currentId");
     return storedId ? parseInt(storedId, 10) : 0;
@@ -10,11 +11,12 @@ const Form = () => {
     headline: "",
     mood: "",
     weather: "",
-    imageUrl: "",
+    imageUrl: "", // this will hold the uploaded image URL
     thoughts: "",
     timestamp: new Date().toISOString().split("T")[0],
   });
 
+  // Handle form data change
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -23,8 +25,24 @@ const Form = () => {
     });
   };
 
+  // Handle image file upload and convert to base64
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData({
+          ...formData,
+          imageUrl: reader.result, // Store base64 image string or URL
+        });
+      };
+      reader.readAsDataURL(file); // Convert image to base64
+    }
+  };
+
+  // Handle form submit
   const handleSubmit = (e) => {
-    e.preventDefault(); // useEffect will be used to handle form submission later
+    e.preventDefault(); // Prevent default submission
     const updatedFormData = {
       ...formData,
       id: id,
@@ -33,18 +51,26 @@ const Form = () => {
     const newData = [updatedFormData, ...existingData];
     localStorage.setItem("formData", JSON.stringify(newData));
 
-    // localStorage.setItem(`formData`, JSON.stringify(formData));
     console.log("Form submitted:", formData);
     const newId = id + 1;
     localStorage.setItem("currentId", newId);
     setId(newId);
+
+    setIsModalOpen(false);
   };
 
   const dateNow = new Date().toISOString().split("T")[0];
   console.log(dateNow);
+
   return (
     <>
-      <input type="checkbox" id="formModal" className="modal-toggle" />
+      <input
+        type="checkbox"
+        id="formModal"
+        className="modal-toggle"
+        checked={isModalOpen}
+        onChange={() => setIsModalOpen(!isModalOpen)} // Toggle modal visibility
+      />
       <div
         className="formContainer modal w-[70%] h-[70%] p-[2rem] flex flex-col gap-3 justify-center items-centermx-auto my-[10rem] mx-auto"
         role="dialog"
@@ -101,15 +127,22 @@ const Form = () => {
             <option value="#cccccc">Grey</option>
           </datalist>
 
+          {/* File input for image upload */}
           <input
-            type="url"
-            name="imageUrl"
-            placeholder="Got a picture? Enter the URL"
-            value={formData.imageUrl}
-            onChange={handleChange}
-            required
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload} // Handle file upload
             className="text-[1.8rem] text-black border-t-2 border-b-2 border-black"
           />
+
+          {/* Preview the uploaded image */}
+          {formData.imageUrl && (
+            <img
+              src={formData.imageUrl}
+              alt="Uploaded"
+              className="mt-4 w-[200px] h-[200px] object-cover"
+            />
+          )}
 
           <input
             placeholder="What are you thinking?"
