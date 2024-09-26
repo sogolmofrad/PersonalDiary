@@ -1,4 +1,5 @@
-function Diary({ src, title, className }) {
+function Diary({ src, headline, mood, weather, thoughts, date, className }) {
+  console.log(headline, mood, weather, thoughts, date);
   let gridClass = "";
   if (className === "grid-item-1") {
     gridClass = "row-start-1 row-span-3 col-start-1 col-span-2";
@@ -29,7 +30,11 @@ function Diary({ src, title, className }) {
     <figure
       className={`gallery-item ${gridClass} p-[7px] border-2 border-black`}
     >
-      <img src={src} alt={title} className="w-full h-full object-cover block" />
+      <img
+        src={src}
+        alt={headline}
+        className="w-full h-full object-cover block"
+      />
     </figure>
   );
 }

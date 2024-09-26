@@ -72,7 +72,7 @@ const Form = ({ onFormSubmit }) => {
         onChange={() => setIsModalOpen(!isModalOpen)}
       />
       <div
-        className="formContainer modal w-[70%] h-[70%] p-[2rem] flex flex-col gap-3 justify-center items-centermx-auto my-[10rem] mx-auto"
+        className="formContainer modal w-[70%] h-[70%] p-[2rem] flex flex-col gap-3 justify-center items-centermx-auto my-[10rem] mx-auto overflow-scroll"
         role="dialog"
       >
         <h1 className="text-[3.6rem]">Let’s Get Those Thoughts Flowing!</h1>
