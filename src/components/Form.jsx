@@ -18,8 +18,6 @@ const Form = ({ onFormSubmit }) => {
     timestamp: new Date().toISOString().split("T")[0],
   });
 
-  const [imagePreview, setImagePreview] = useState(null); // Preview the image
-
   // Handle form field changes
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -116,14 +114,14 @@ const Form = ({ onFormSubmit }) => {
             className="text-[1.8rem] text-black border-t-2 border-b-2 border-black"
           />
 
-          <input
+          <textarea
             placeholder="What are you thinking?"
             type="text"
             name="thoughts"
             value={formData.thoughts}
             onChange={handleChange}
             required
-            className="text-[1.8rem] text-black border-t-2 border-b-2 border-black w-full"
+            className="h-[15rem] text-[1.8rem] text-black border-t-2 border-b-2 border-black w-full"
           />
 
           <button

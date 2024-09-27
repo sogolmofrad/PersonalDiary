@@ -23,9 +23,13 @@ function Diaries({ diaryUpdate }) {
   return (
     <div className="relative">
       {/* Diaries grid */}
-      <div className="gallery w-[95%] grid md:grid-cols-6 md:grid-rows-7 gap-[1.5rem]">
+      <div className="gallery px-[5rem] py-[2rem] w-[95%] grid grid-cols-3 grid-rows-3 md:grid-cols-4 md:grid-rows-2 gap-[1.5rem]">
         {diaries?.map((diary, i) => (
-          <div key={i} onClick={() => handleDiaryClick(diary)}>
+          <div
+            key={i}
+            onClick={() => handleDiaryClick(diary)}
+            className={`gallery-item p-[7px] border-2 border-black`}
+          >
             <Diary
               src={diary.imageUrl}
               headline={diary.headline}

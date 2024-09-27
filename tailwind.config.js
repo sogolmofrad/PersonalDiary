@@ -6,7 +6,8 @@ export default {
   theme: {
     extend: {
       gridTemplateRows: {
-        7: "repeat(7,9vh )",
+        2: "repeat(2, minmax(0, 25rem))",
+        3: "repeat(3, minmax(0, 15rem))",
       },
     },
   },
