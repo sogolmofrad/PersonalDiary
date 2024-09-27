@@ -1,8 +1,8 @@
 function Header() {
   return (
     <header>
-      <div className="logo">
-        <img src="images/logo.png" alt="logo" className="w-[20rem] mx-auto" />
+      <div className="logo h-[15vh]">
+        <img src="images/logo.png" alt="logo" className="h-[90%] mx-auto" />
       </div>
     </header>
   );
