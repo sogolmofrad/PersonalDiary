@@ -29,19 +29,6 @@ const Form = ({ onFormSubmit }) => {
     });
   };
 
-  // Handle image upload
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const imageUrl = URL.createObjectURL(file); // Create a URL for the uploaded image
-      setFormData({
-        ...formData,
-        imageUrl,
-      });
-      setImagePreview(imageUrl); // Set image preview
-    }
-  };
-
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -120,21 +107,14 @@ const Form = ({ onFormSubmit }) => {
           />
 
           <input
-            type="file"
-            accept="image/*"
+            type="url"
             name="imageUrl"
-            onChange={handleImageUpload} // Handle image file upload
+            placeholder="Got a picture? Enter the URL"
+            value={formData.imageUrl}
+            onChange={handleChange}
             required
             className="text-[1.8rem] text-black border-t-2 border-b-2 border-black"
           />
-
-          {imagePreview && (
-            <img
-              src={imagePreview}
-              alt="Uploaded Preview"
-              className="w-[100px] h-[100px] object-cover"
-            />
-          )}
 
           <input
             placeholder="What are you thinking?"
