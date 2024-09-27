@@ -1,5 +1,4 @@
-function Diary({ src, headline, mood, weather, thoughts, date, className }) {
-  console.log(headline, mood, weather, thoughts, date);
+function Diary({ src, headline, className }) {
   let gridClass = "";
   if (className === "grid-item-1") {
     gridClass = "row-start-1 row-span-3 col-start-1 col-span-2";
